@@ -99,8 +99,8 @@ My goal for the app is to display only one challenge card at a time as a flashca
 
 ### **Fixed Today**
 
-1. Resolved script linking on `challenge.html` so JavaScript loads and executes properly.
-2. Created and linked the main `style.css` stylesheet across all HTML pages.
+1. Resolved script linking on challenge.html so JavaScript loads and executes properly.
+2. Created and linked the main style.css stylesheet across all HTML pages.
 
 ### **Still Missing (Building Before the Layout Assignment)**
 
@@ -117,5 +117,5 @@ My goal for the app is to display only one challenge card at a time as a flashca
 
 1. Add css layout for the home page
 2. Used Flexbox to align header titles and countdown timer.
-3. Linked `Mooli` and `DM Sans` in HTML with `sans-serif` fallback declarations.
-4. Added media block at the bottom of `style.css`. Transformed desktop multi-column grids into single-column stacks. 
+3. Linked Mooli and DM Sans in HTML with `sans-serif` fallback declarations.
+4. Added media block at the bottom of style.css. Transformed desktop multi-column grids into single-column stacks. 
