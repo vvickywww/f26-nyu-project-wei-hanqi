@@ -95,36 +95,27 @@ Currently, the script displays all 8 challenge cards on the page simultaneously 
 
 My goal for the app is to display only one challenge card at a time as a flashcard/prompt. In the upcoming iteration, I plan to refactor the display logic so that clicking the "Doesn’t make sense? Shuffle" button picks a single random challenge from the array and renders only that card on the screen.
 
-## Structure Audit — [10.26]
+### **Structure Audit — [10.26]**
 
-**Fixed today:**
-- Resolved script linking on `challenge.html` so JavaScript loads and executes properly.
-- Created and linked the main `style.css` stylesheet across all HTML pages.
+### **Fixed Today**
 
-**Still missing (building before the layout assignment):**
-- Slide mockups and presentation background image assets.
-- Random challenge card pop-up functionality during active practice.
+1. Resolved script linking on `challenge.html` so JavaScript loads and executes properly.
+2. Created and linked the main `style.css` stylesheet across all HTML pages.
 
-**Technical challenges / Questions:**
-- **Dynamic Challenge Cards:** How to dynamically overlay or insert the challenge card onto the practice screen rather than navigating to a separate HTML page.
-- **Interactive Button Logic:** How to write event listeners for functional buttons, such as triggering file uploads for slides and shuffling random challenge prompts.
+### **Still Missing (Building Before the Layout Assignment)**
 
-# Weekly Summary of Changes — Layout & CSS Grid
+1. Slide mockups and presentation background image assets.
+2. Random challenge card pop-up functionality during active practice.
 
-## 1. CSS Grid & Layout Structure
-- **Layout Plan Comment:** Added mandatory layout plan comment at top of `style.css` defining 2D grid targets vs. 1D flex components.
-- **Home Setup Section (`.setup-grid`):** Transformed setup cards into a multi-column desktop grid.
-- **Practice Screen (`.practice-grid`):** Applied a `3fr 2fr` two-column layout placing slide preview on the left and visual setting/challenge on the right.
-- **Report Actions (`.next-steps-grid`):** Gridded "Practice Again" and "Go to Home Page" links side-by-side on desktop.
+### **Technical Challenges / Questions**
 
-## 2. Flexbox & Component Styling
-- **Header Layout:** Used Flexbox (`display: flex; justify-content: space-between;`) to align header titles and countdown timer.
-- **Vertical Button Stacking:** Formatted setup card buttons (`.setup-card button`) with `width: 100%` and 8px gaps so they stack vertically inside cards.
+1. **Dynamic Challenge Cards:** How to dynamically overlay or insert the challenge card onto the practice screen rather than navigating to a separate HTML page.
+2. **Interactive Button Logic:** How to triggering file uploads for slides and shuffling random challenge prompts.
 
-## 3. 8px Spacing Grid & Typography
-- **Design Tokens:** Added CSS custom variables (`:root`) enforcing an 8px spacing system (`8px`, `16px`, `24px`, `32px`, `48px`) across all padding, margins, and gaps.
-- **Google Fonts:** Linked `Mooli` and `DM Sans` in HTML `<head>` with `sans-serif` fallback declarations.
 
-## 4. Single Mobile Breakpoint
-- Added `@media (max-width: 700px)` block at the bottom of `style.css`.
-- Transformed desktop multi-column grids (`repeat(3, 1fr)`, `3fr 2fr`) into single-column (`1fr`) stacks and changed header direction to `column` for mobile screens.
+### **Weekly Summary of Changes — Layout & CSS Grid**
+
+1. Add css layout for the home page
+2. Used Flexbox to align header titles and countdown timer.
+3. Linked `Mooli` and `DM Sans` in HTML with `sans-serif` fallback declarations.
+4. Added media block at the bottom of `style.css`. Transformed desktop multi-column grids into single-column stacks. 
