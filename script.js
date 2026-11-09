@@ -36,14 +36,11 @@ const message = document.getElementById("message");
 // STEP 3: Add event listener
 if (nextButton) {
   nextButton.addEventListener("click", () => {
-    console.log("Button clicked! Old slide:", currentSlide);
 
     // 1. Change state
     if (currentSlide < totalSlides) {
       currentSlide = currentSlide + 1;
     }
-
-    console.log("New slide:", currentSlide);
 
     // 2. Update page elements
     if (slideCount) {
@@ -53,13 +50,16 @@ if (nextButton) {
       slideTitle.textContent = "Slide " + currentSlide;
     }
 
-    // 3. Program response
+    // 3. Program response on final slide
     if (currentSlide === totalSlides) {
-      nextButton.textContent = "Finish Practice";
-      nextButton.classList.add("btn-finish");
-      if (message) message.textContent = "You reached the last slide!";
+      nextButton.style.display = "none"; // Hides the button completely
+      if (message) {
+        message.textContent = "You reached the last slide! Click End Practice to view your report.";
+      }
     } else {
-      if (message) message.textContent = "Keep going! You are currently on slide " + currentSlide + ".";
+      if (message) {
+        message.textContent = "Keep going! You are currently on slide " + currentSlide + ".";
+      }
     }
   });
 }
