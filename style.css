@@ -1,3 +1,14 @@
+/* LAYOUT PLAN
+   - 2D CSS Grid Components:
+     - main (Page Shell): Page-level grid with gap: var(--space-32) for consistent spacing between vertical sections.
+     - .setup-grid (index.html): 3-column grid (repeat(3, 1fr)) for side-by-side setup cards.
+     - .practice-grid (practice.html): 2-column grid (3fr 2fr) for slide view and setting/challenge controls.
+     - .next-steps-grid (report.html): 2-column grid (repeat(2, 1fr)) for report action buttons.
+   - 1D Flexbox Components (Left alone from CSS Grid):
+     - header: Flexbox (display: flex; justify-content: space-between) for 1D horizontal alignment of title & timer.
+     - button, a.btn: Inline-flex (display: inline-flex) for internal content alignment.
+     - .setup-card button: Flexbox (display: flex) to stack buttons vertically inside cards.
+ */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mooli&display=swap');
 
 /* Base Page Setup & 8px Spacing Grid */
