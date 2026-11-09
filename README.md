@@ -119,3 +119,11 @@ My goal for the app is to display only one challenge card at a time as a flashca
 2. Used Flexbox to align header titles and countdown timer.
 3. Linked Mooli and DM Sans in HTML with `sans-serif` fallback declarations.
 4. Added media block at the bottom of style.css. Transformed desktop multi-column grids into single-column stacks. 
+
+## What Was Done
+
+- **Added Progress Counter:** Integrated a dynamic slide step counter (`Slide X of 15`) and interactive state-tracking logic into `practice.html`.
+- **State-Driven Interactions:** Implemented state management using `currentSlide` and `totalSlides` in `script.js` following the classroom pattern: **User Action** → **State Change** → **Page Update** → **Program Response**.
+- **Script Error Fix & Guarding:** Wrapped page-specific elements (like `gallery` and `nextButton`) in conditional checks (`if (nextButton)`) so JavaScript runs without errors across all HTML pages.
+- **Conditional Program Response:** Programmed the button to automatically change its label to `"Finish Practice"` and apply a highlighted completion style once the user reaches slide 15.
+
