@@ -64,10 +64,12 @@ header {
 }
 
 /* Page Shell Container */
-/* page shell: limits maximum desktop width and centers content */
+/* Page Shell Container (Converted to CSS Grid) */
 main {
   max-width: 1440px;
   margin: 0 auto;
+  display: grid;
+  gap: var(--space-32); /* Consistent spacing between top-level sections */
 }
 
 /* DESKTOP GRID RULES (Default / Desktop Frame)*/
