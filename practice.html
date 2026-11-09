@@ -17,25 +17,35 @@
 
 <!-- MAIN CONTENT -->
 <main>
-<div class="practice-grid">
-  <!-- CURRENT SLIDE SECTION -->
+  <div class="practice-grid">
+    <!-- CURRENT SLIDE SECTION -->
     <section class="practice-card">
-      <h2>Slide 1</h2>
-      <p>Current slide content appears here.</p>
-      <p>Slide 1 of 15</p>
+      <h2 id="slide-title">Slide 1</h2>
+      <p id="slide-description">Current slide content appears here.</p>
+      <p id="slide-count" class="progress-text">Slide 1 of 15</p>
+
+      <!-- Next Slide Button -->
+      <button id="next-button" type="button" class="btn">Next Slide</button>
+
+      <!-- Status Message for Program Response -->
+      <p id="message" class="message" role="status">
+        Click the button to advance through your presentation slides.
+      </p>
     </section>
 
-  <!-- PRESENTATION BACKGROUND / VISUAL SETTING -->
+    <!-- PRESENTATION BACKGROUND / VISUAL SETTING -->
     <section class="practice-card">
       <p>Background image based on your presentation setting.</p>
     </section>
-</div>
-  <!-- END PRACTICE -->
-  <section>
-    <a href="report.html" class="btn">End Practice</a>
-  </section>
+  </div>
 
+  <!-- END PRACTICE -->
+  <section class="end-section">
+    <a href="report.html" class="btn btn-secondary">End Practice</a>
+  </section>
 </main>
+
+<script src="script.js"></script>
 
   
   </body>
