@@ -1,6 +1,4 @@
-// ==========================================================================
-// 1. CHALLENGE GALLERY LOGIC (runs only on pages with #challenge-gallery)
-// ==========================================================================
+// 1. CHALLENGE GALLERY LOGIC (runs only on pages with #challenge-gallery) 
 const gallery = document.getElementById("challenge-gallery");
 
 // Only run gallery creation if the gallery container AND data array exist
@@ -23,21 +21,19 @@ if (gallery && typeof challenges !== "undefined") {
 }
 
 
-// ==========================================================================
 // 2. SLIDE COUNTER LOGIC (runs on practice.html)
-// ==========================================================================
 
-// STEP 3: Create the state
+// STEP 1: Create the state
 let currentSlide = 1;
 const totalSlides = 15;
 
-// STEP 4: Find the elements on the page
+// STEP 2: Find the elements on the page
 const slideCount = document.getElementById("slide-count");
 const slideTitle = document.getElementById("slide-title");
 const nextButton = document.getElementById("next-button");
 const message = document.getElementById("message");
 
-// STEP 5: Add event listener
+// STEP 3: Add event listener
 if (nextButton) {
   nextButton.addEventListener("click", () => {
     console.log("Button clicked! Old slide:", currentSlide);
