@@ -3,52 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Project</title>
+    <title>Presentation Challenge</title>
     <link rel="stylesheet" href="style.css" />
-    
- <!-- Added defer so scripts run AFTER the HTML body is parsed -->
-    <script src="challenge.js" defer></script>
-    <script src="script.js" defer></script>
   </head>
-
   <body>
-    <!-- START BELOW -->
-
-    <!-- MAIN CONTENT -->
-  <main>
-<div class="practice-grid">
-    <!-- HERO / PRACTICE HEADER SECTION -->
-    <section>
+    <!-- PAGE HEADER -->
+    <header>
       <h1>Practice makes perfect!</h1>
       <p>Time left: <span>15:00</span></p>
-    </section>
+    </header>
 
-    <!-- SLIDE DISPLAY SECTION -->
-    <section>
-      <h2>Slide Preview</h2>
-      <p>Slides 10</p>
-      <p>10/15</p>
-    </section>
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="practice-grid">
+        <!-- LEFT CARD: CURRENT SLIDE SECTION -->
+        <section class="practice-card">
+          <h2 id="slide-title">Slide 1</h2>
+          <p id="slide-description">Current slide content appears here.</p>
+          <p id="slide-count" class="progress-text">Slide 1 of 15</p>
 
-    <!-- PRACTICE CHALLENGE SECTION -->
-    <section>
-      <h2>Challenge: Time Cut</h2>
-     <h2>Practice Challenges</h2>
-            <div id="challenge-gallery">
-                <div class="challenge">
-                </div>
-            </div>
-      <button type="button">Doesn’t make sense? Shuffle</button>
-      <button type="button">Challenge Accepted!</button>
-    </section>
-</div>
-    <!-- PRACTICE CONTROLS SECTION -->
-    <section>
-      <a href="report.html">End Practice</a>
-    </section>
+          <!-- Next Slide Button -->
+          <button id="next-button" type="button" class="btn">Next Slide</button>
 
-  </main>
+          <!-- Status Message -->
+          <p id="message" class="message" role="status"></p>
+        </section>
 
-</body>
+        <!-- RIGHT CARD: LIVE CHALLENGE POPUP & SHUFFLE -->
+        <section class="practice-card setting-backdrop">
+          <div class="challenge-popup">
+            <span class="badge">Live Interruption</span>
+            <p id="challenge-count" class="progress-text"></p>
+
+            <!-- render() draws the active challenge card inside here -->
+            <div id="challenge-display"></div>
+
+            <!-- Shuffle Button -->
+            <button id="shuffle-button" type="button" class="btn btn-secondary">
+              Shuffle Challenge
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- END PRACTICE -->
+      <section class="end-section">
+        <a href="report.html" class="btn btn-secondary">End Practice</a>
+      </section>
+    </main>
+
+    <!-- Load Assignment 6 data array first, then main script -->
+    <script src="challenge.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
-
