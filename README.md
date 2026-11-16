@@ -1,3 +1,40 @@
+### Week 9 — November 15, 2026
+
+**Render Plan**
+- **User story:** As a presenter practicing my slides, I want a random challenge card to pop up automatically during my practice session—with a Shuffle button in case the prompt doesn't fit my deck—so that I can test my adaptability without interrupting my flow.
+- **State:** `currentChallengeIndex` (which remembers the index of the active challenge in the `challenges` array and starts at a random index when `practice.html` loads) and `currentSlide` (which tracks the slide number and starts at `1`).
+- **What changes it:** Clicking the **Shuffle** button picks a new random index from `challenges` (avoiding the current index so it doesn't repeat twice in a row), updates `currentChallengeIndex`, and calls `render()`. Clicking **Next Slide** increments `currentSlide` by `1` and calls `render()`.
+- **What render() draws:** Clears the challenge container on `practice.html` and rebuilds the active challenge card from the `challenges` array, while also redrawing the current slide heading and counter.
+- **The if inside the loop:** Loops through `challenges` with `(challenge, index)` and checks `if (index === currentChallengeIndex)` so that only the single matching challenge card is built and appended to the page.
+- **What else render() works out:** Calculates the challenge indicator text (e.g., `"Challenge #2 of 6"`), computes `"Slide X of 15"`, updates the status message, and hides the `"Next Slide"` button once `currentSlide === totalSlides`.
+
+**What changed:**
+- Added a `render()` function in `script.js` that draws the active challenge card on `practice.html` directly from the `challenges` array based on `currentChallengeIndex`.
+- Added a **Shuffle** button to `practice.html` so users can swap out a random challenge if it doesn't apply to their presentation, and called `render()` on page load so a challenge pops up automatically.
+- Updated the `"Next Slide"` click handler to only update `currentSlide` and call `render()`, moving all DOM updates (`textContent`, `style.display`, `appendChild`) inside `render()`.
+- Replaced placeholder background text with real presentation setting backgrounds.
+
+**Patching vs. rendering:**
+Last week, my click handler patched individual pieces of the page one by one using `textContent` and `style.display` directly inside the event listener. This week, my click handlers only update state variables (`currentSlide` and `currentChallengeIndex`) and call `render()`, which rebuilds the UI from scratch based on the current state. Because `render()` runs both on page load and after every click, the challenge card, slide count, and button visibility can never fall out of sync.
+
+**What was hard, and what I tried:**
+At first, I wasn't sure how to use `render()` with a randomizer without adding an extra "Draw Card" screen that would slow down the user. I realized that keeping the randomness inside the Shuffle click handler (and initial state setup) while letting `render()` loop through `challenges` to draw the matching index kept the UI simple and met all the state-driven requirements. I also had to make sure the Shuffle button didn't randomly pick the exact same challenge twice in a row.
+
+**What happened when I tried to break it:**
+I tested clicking Shuffle rapidly ten times in a row, advancing to slide 15 and clicking Shuffle afterward, and opening other pages (`index.html` and `report.html`) that share `script.js`. Adding a `while` check in the Shuffle handler prevented back-to-back duplicate cards, and keeping the `if` guards around page-specific elements ensured `render()` didn't throw console errors on pages without the practice cards.
+
+**What I learned or changed my mind about:**
+I initially thought `render()` would overcomplicate my project since I just wanted a challenge to pop up automatically and shuffle on click. Seeing how calling `render()` once on load and again on click handled both behaviors with one function showed me why separating state changes from DOM drawing makes the code cleaner and easier to debug.
+
+**Question for Joey:**
+When storing user choices across pages (like selecting a background setting on `index.html` and displaying that background image on `practice.html`), is `localStorage` the cleanest way to pass that state between HTML files, or is there another pattern you recommend?
+
+**Next week's goal:**
+update presentation background and timer carry over into the practice session.
+
+**AI use:**
+Used Gemini to brainstorm how to fit my automatic challenge popup and Shuffle button idea into the `render()` pattern, and trouble shoot my code.
+
 ## **Instructions**
 
 ### **Step-by-Step: Getting Set Up**
@@ -125,4 +162,3 @@ My goal for the app is to display only one challenge card at a time as a flashca
 1. Added Progress Counter: Integrated a dynamic slide counter (`Slide X of 15`) and updated `practice.html` to follow the change.
 2. State-Driven Interactions: mapping out the steps of change and what the user will see in `script.js`.
 3. Conditional Program Response: Programmed the button to automatically change its label to `"Finish Practice"` and apply a highlighted completion style once the user reaches slide 15 (the final slide).
-
