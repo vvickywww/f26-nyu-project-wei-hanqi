@@ -26,11 +26,28 @@
       <button type="button">Practice without slides</button>
     </section>
 
-    <section class="setup-card">
-      <h2>Set a timer</h2>
-      <label for="practice-time">Practice time in minutes</label>
-      <input id="practice-time" name="practice-time" type="number" min="1" placeholder="e.g. 15">
-    </section>
+    <!-- TIMER SETUP -->
+        <section class="setup-card">
+          <h2>Set a timer</h2>
+
+          <label for="practice-time">
+            Practice time in minutes
+          </label>
+
+          <input
+            id="practice-time"
+            name="practice-time"
+            type="number"
+            min="1"
+            step="1"
+            value="15"
+            placeholder="e.g. 15"
+          />
+
+          <p id="timer-message" class="message" role="status">
+            Your practice session will last 15 minutes.
+          </p>
+        </section>
 
     <section class="setup-card">
       <h2>Choose a presentation setting</h2>
@@ -49,5 +66,6 @@
   </section>
 
 </main>   
+    <script src="script.js"></script>
   </body>
 </html>
