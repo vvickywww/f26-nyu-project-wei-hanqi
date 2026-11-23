@@ -1,3 +1,40 @@
+### Week 11 — November 23, 2026
+USER STORY AUDIT
+MAIN STORY:
+Criterion 1:
+  Status (✅ / 🟡 / ❌):
+  Notes:
+Criterion 2:
+  Status (✅ / 🟡 / ❌):
+  Notes:
+Criterion 3:
+  Status (✅ / 🟡 / ❌):
+  Notes:
+
+**USER TEST NOTES (filled in by the maker)**
+
+Maker: Vicky
+Tester: 
+Who the user is (one sentence): A college student preparing for a 5-minute class presentation who wants to practice pacing their slides and handling unexpected questions.
+
+Task 1 (full main story — set a timer, start practice, click through slides, and respond to the random challenge):
+  Completed?  Yes
+  Where they hesitated or got stuck: On the home page, they paused briefly after typing "5" into the timer box because they looked for a "Save" button before noticing the confirmation message underneath. On the practice page, they didn't realize the challenge card was hidden at first until it suddenly popped up around Slide 6.
+  What they said they expected: They expected the countdown to start immediately on the practice page (which worked), and they liked that the challenge interrupted them partway through, though they expected a brief sound or highlight when the challenge appeared so they wouldn't miss it while reading their slides.
+
+Task 2 (customize the session by choosing a presentation setting and uploading slides on the home page):
+  Completed?  No
+  Where they hesitated or got stuck: They clicked "Class presentation" and "Upload from files" on the home page multiple times, then clicked "Start Practice" expecting to see their own slides and a classroom background.
+  What they said they expected: They expected the setting buttons to highlight when clicked and change the background placeholder on the practice page, and they expected to see real slide images instead of "Slide 1" placeholder text.
+
+Task 3 (optional — test clearing the timer box and using the Shuffle Challenge button):
+  Completed?  Yes
+  Where they hesitated or got stuck: No hesitation—when they deleted the number in the timer box, the helper message immediately told them to enter a number between 1 and 60 minutes, and clicking "Shuffle Challenge" swapped the prompt right away.
+  What they said they expected: They expected an error or broken timer when leaving the box blank, so they were pleasantly surprised that the practice page safely defaulted to 15:00.
+
+Tester's one-line takeaway (ask them at the end):
+
+
 ### Week 10 — November 22, 2026
 **Event Plan**
 - **User story:** As a student practicing my presentation, I want to type how many minutes I have on the home page and see a live countdown start as soon as I click Start Practice, so that I can practice pacing my slides under real time limits.
