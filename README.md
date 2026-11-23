@@ -1,5 +1,32 @@
-### Week 9 — November 15, 2026
+### Week 10 — November 22, 2026
+**Event Plan**
+- **User story:** As a student practicing my presentation, I want to type how many minutes I have on the home page and see a live countdown start as soon as I click Start Practice, so that I can practice pacing my slides under real time limits.
+- **The event:** Typing in the practice time number box on index.html (the input event). It reads event.target.value on every keystroke so the page checks the number right away without needing a separate submit button.
+- **State:** The page remembers two new things: targetMinutes (the number of minutes typed on index.html, saved in localStorage so practice.html can read it) and secondsLeft (the remaining seconds counting down on practice.html, starting from the user's typed minutes or defaulting to 15 minutes). 
+- **My function:** isValidTimer(minutesValue) answers the question, "Is the typed number between 1 and 60 minutes?" It takes what the user typed as a parameter, removes extra spaces, and returns true or false.
 
+**What changed:**
+- Added an input listener to the timer box on index.html so it saves the typed minutes and shows a live confirmation or helper message underneath.
+- Connected the saved minutes to practice.html so the Time left display in the header counts down every second once the practice session starts.
+
+**Why redraw on every event:** Instead of changing the timer text directly inside the typing listener or the countdown timer, those events only update the saved state numbers (targetMinutes and secondsLeft) and call render(). Redrawing the page from state every time guarantees that the input box, the helper message on index.html, and the countdown clock on practice.html always stay in sync. 
+
+**What was hard, and what I tried:** Connecting two separate HTML pages (index.html and practice.html) with one shared script.js file was tricky at first because moving to a new page resets the script, and some elements only exist on one page and not the other. To fix this, I used localStorage to pass the timer minutes from index.html to practice.html, added simple if checks inside render() so it only updates elements that exist on the active page, and tested isValidTimer in the browser Console before connecting it to the countdown.
+
+**What happened when I tried to break it:**
+- I tested isValidTimer in the Console with 5, numbers with extra spaces, an empty box, 0, and 90—it returned true for numbers between 1 and 60 and false for empty, zero, or numbers over 60.
+- On index.html, I typed and deleted numbers quickly in the timer box; whenever I cleared the box or typed 0, the message switched cleanly to "Enter a practice time between 1 and 60 minutes." instead of showing an error, and clicking Start Practice safely defaulted to a 15-minute countdown.
+- On practice.html, I tested a 1-minute timer and watched it count down from 1:00 to 0:00 (Time's up!) without going into negative numbers.
+
+**What I learned or changed my mind about:** At first, I thought the timer setup and the challenge card needed to be on the same page. Separating the setup on index.html from the live practice session on practice.html makes the app feel much closer to a real presentation tool while still keeping all screen updates organized inside one render() function.
+
+**Question for Joey:** Right now, my slides still use placeholder text like Slide 1 and Slide 2. What is the simplest way to let users upload real slide images or show their practice summary on report.html using the same state and render pattern?
+
+**Next week's goal:** Make the presentation setting buttons on index.html (Class presentation, Pitch, Thesis / Research, Others) save the user's choice so practice.html updates its background image, and display a session summary on report.html.
+
+**AI use:** Used AI to plan how to pass the timer value from index.html to practice.html using localStorage, organize the isValidTimer function and countdown timer inside my render() pattern.
+
+### Week 9 — November 15, 2026
 **Render Plan**
 - **User story:** As a student practicing my presentation, I want a random challenge card to pop up automatically during my practice session, with a Shuffle button in case the prompt doesn't fit my situation, so that I can test my adaptability without interrupting my flow.
 - **State:** The page remembers the position number of the challenge displayed. It starts at a random position number.
