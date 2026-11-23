@@ -8,64 +8,54 @@
   </head>
   <body>
     <!-- START BELOW -->
-     
-<!--PAGE HEADER-->
-<header>
-  <h1>Don't just practice your presentation. Practice the unexpected.</h1>
-</header>
 
-<!-- MAIN CONTENT -->
-<main>
+    <!--PAGE HEADER-->
+    <header>
+      <h1>Don't just practice your presentation. Practice the unexpected.</h1>
+    </header>
 
-  <!-- 3-Column Desktop Grid Wrapper -->
-  <div class="setup-grid">
-    <section id="setup" class="setup-card">
-      <h2>Upload slides</h2>
-      <p>Choose a presentation file, or practice without slides.</p>
-      <button type="button">Upload from files</button>
-      <button type="button">Practice without slides</button>
-    </section>
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- 3-Column Desktop Grid Wrapper -->
+      <div class="setup-grid">
+        <section id="setup" class="setup-card">
+          <h2>Upload slides</h2>
+          <p>Choose a presentation file, or practice without slides.</p>
+          <button type="button">Upload from files</button>
+          <button type="button">Practice without slides</button>
+        </section>
 
-    <!-- TIMER SETUP -->
         <section class="setup-card">
           <h2>Set a timer</h2>
-
-          <label for="practice-time">
-            Practice time in minutes
-          </label>
-
+          <label for="practice-time">Practice time in minutes</label>
           <input
             id="practice-time"
             name="practice-time"
             type="number"
             min="1"
-            step="1"
-            value="15"
+            max="60"
             placeholder="e.g. 15"
           />
-
-          <p id="timer-message" class="message" role="status">
-            Your practice session will last 15 minutes.
-          </p>
+          <p id="timer-status" class="message" role="status"></p>
         </section>
 
-    <section class="setup-card">
-      <h2>Choose a presentation setting</h2>
-      <button type="button">Class presentation</button>
-      <button type="button">Pitch</button>
-      <button type="button">Thesis / Research</button>
-      <button type="button">Others</button>
-    </section>
-  </div>
+        <section class="setup-card">
+          <h2>Choose a presentation setting</h2>
+          <button type="button">Class presentation</button>
+          <button type="button">Pitch</button>
+          <button type="button">Thesis / Research</button>
+          <button type="button">Others</button>
+        </section>
+      </div>
 
-  <!-- START PRACTICE SECTION -->
-  <section>
-    <h2>Ready to start?</h2>
-    <p>When your settings are ready, begin your practice session.</p>
-    <a href="practice.html" class="btn">Start Practice</a>
-  </section>
+      <!-- START PRACTICE SECTION -->
+      <section>
+        <h2>Ready to start?</h2>
+        <p>When your settings are ready, begin your practice session.</p>
+        <a href="practice.html" class="btn">Start Practice</a>
+      </section>
+    </main>
 
-</main>   
     <script src="script.js"></script>
   </body>
 </html>
