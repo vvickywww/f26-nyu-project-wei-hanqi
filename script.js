@@ -99,5 +99,33 @@ if (nextButton) {
   });
 }
 
-// 5. INITIAL RENDER ON PAGE LOAD
+// Homepage: start practice with the selected duration
+if (startPracticeLink) {
+  startPracticeLink.addEventListener("click", (event) => {
+    if (!isValidPracticeTime(practiceMinutes)) {
+      event.preventDefault();
+      render();
+      return;
+    }
+    const selectedTime = Number(practiceMinutes);
+    window.location.href =
+      "practice.html?minutes=" + selectedTime;
+  });
+}
+
+// 6. START COUNTDOWN ON PRACTICE PAGE
+if (timerDisplay) {
+  // Show the initial countdown
+  render();
+  const timerInterval = setInterval(() => {
+    if (remainingSeconds > 0) {
+      remainingSeconds--;
+      render();
+    }
+    if (remainingSeconds === 0) {
+      clearInterval(timerInterval);
+    }
+  }, 1000);
+}
+// 7. INITIAL RENDER
 render();
