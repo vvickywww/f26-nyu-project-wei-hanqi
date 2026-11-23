@@ -1,14 +1,41 @@
-// 1. STATE VARIABLES
+// Is the typed timer value a valid number between 1 and 60 minutes? Returns true or false.
+function isValidTimer(minutesValue) {
+  const cleanText = String(minutesValue).trim();
+  const numericMinutes = Number(cleanText);
+  return (
+    cleanText !== "" &&
+    !Number.isNaN(numericMinutes) &&
+    numericMinutes >= 1 &&
+    numericMinutes <= 60
+  );
+}
+
+// currentSlide: tracks which slide the presenter is currently viewing
 let currentSlide = 1;
 const totalSlides = 15;
 
-// Start at a random challenge index when challenge.html loads
+// challengeSlide: picks a random slide between 2 and 14 where the interruption appears
+const challengeSlide = Math.floor(Math.random() * (totalSlides - 2)) + 2;
+
+// currentChallengeIndex: which interruption the presenter is practicing right now
 let currentChallengeIndex = 0;
 if (typeof challenges !== "undefined" && challenges.length > 0) {
   currentChallengeIndex = Math.floor(Math.random() * challenges.length);
 }
 
-// 2. DOM ELEMENTS
+// targetMinutes: stores the practice time in minutes typed on index.html
+let targetMinutes = localStorage.getItem("targetMinutes") || "";
+
+// secondsLeft: remaining countdown seconds on practice.html (defaults to 15 minutes)
+let secondsLeft = 15 * 60;
+if (isValidTimer(targetMinutes)) {
+  secondsLeft = Number(targetMinutes.trim()) * 60;
+}
+
+// Find elements across index.html and practice.html
+const practiceTimeInput = document.getElementById("practice-time");
+const timerStatus = document.getElementById("timer-status");
+const timeDisplay = document.getElementById("time-display");
 
 const challengeDisplay = document.getElementById("challenge-display");
 const challengeCount = document.getElementById("challenge-count");
@@ -19,13 +46,48 @@ const slideTitle = document.getElementById("slide-title");
 const nextButton = document.getElementById("next-button");
 const message = document.getElementById("message");
 
-// 3. RENDER FUNCTION
-
-// render: draws the active challenge card and updates slide progress from state
+// render() draws the timer, challenge popup, and slide progress from state
 function render() {
-  // 1. Redraw the active challenge card on challenge.html (replaces old #challenge-gallery loop)
+  // 1. Keep the input box on index.html synced with saved state
+  if (practiceTimeInput && practiceTimeInput.value !== targetMinutes) {
+    practiceTimeInput.value = targetMinutes;
+  }
+
+  // 2. Show confirmation or empty-box guidance on index.html using isValidTimer()
+  if (timerStatus) {
+    if (isValidTimer(targetMinutes)) {
+      timerStatus.textContent =
+        "Timer set to " + targetMinutes.trim() + " minutes.";
+    } else {
+      timerStatus.textContent =
+        "Enter a practice time between 1 and 60 minutes.";
+    }
+  }
+
+  // 3. Draw the live MM:SS countdown in the header of practice.html
+  if (timeDisplay) {
+    const minutes = Math.floor(secondsLeft / 60);
+    const seconds = secondsLeft % 60;
+    const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+
+    if (secondsLeft === 0) {
+      timeDisplay.textContent = "0:00 (Time's up!)";
+    } else {
+      timeDisplay.textContent = minutes + ":" + formattedSeconds;
+    }
+  }
+
+  // 4. Draw the active challenge card and reveal it once currentSlide reaches challengeSlide
   if (challengeDisplay && typeof challenges !== "undefined") {
     challengeDisplay.innerHTML = "";
+    challengeDisplay.hidden = currentSlide < challengeSlide;
+
+    if (challengeCount) {
+      challengeCount.hidden = currentSlide < challengeSlide;
+    }
+    if (shuffleButton) {
+      shuffleButton.hidden = currentSlide < challengeSlide;
+    }
 
     challenges.forEach(function (challenge, index) {
       if (index === currentChallengeIndex) {
@@ -51,7 +113,7 @@ function render() {
     }
   }
 
-  // 2. Redraw slide progress and Next Slide button from state
+  // 5. Draw slide progress and Next Slide button from state
   if (slideCount) {
     slideCount.textContent = "Slide " + currentSlide + " of " + totalSlides;
   }
@@ -73,7 +135,27 @@ function render() {
   }
 }
 
-// 4. CLICK HANDLERS (Only change state and call render)
+// "input" event: reads event.target.value from #practice-time on index.html and redraws
+if (practiceTimeInput) {
+  practiceTimeInput.addEventListener("input", (event) => {
+    targetMinutes = event.target.value;
+    localStorage.setItem("targetMinutes", targetMinutes);
+    render();
+  });
+}
+
+// Start the 1-second countdown automatically when practice.html loads
+if (timeDisplay) {
+  const countdownInterval = setInterval(() => {
+    if (secondsLeft > 0) {
+      secondsLeft = secondsLeft - 1;
+      render();
+    } else {
+      clearInterval(countdownInterval);
+      render();
+    }
+  }, 1000);
+}
 
 // Pick a new random challenge index (avoiding back-to-back repeats)
 if (shuffleButton) {
@@ -99,33 +181,5 @@ if (nextButton) {
   });
 }
 
-// Homepage: start practice with the selected duration
-if (startPracticeLink) {
-  startPracticeLink.addEventListener("click", (event) => {
-    if (!isValidPracticeTime(practiceMinutes)) {
-      event.preventDefault();
-      render();
-      return;
-    }
-    const selectedTime = Number(practiceMinutes);
-    window.location.href =
-      "practice.html?minutes=" + selectedTime;
-  });
-}
-
-// 6. START COUNTDOWN ON PRACTICE PAGE
-if (timerDisplay) {
-  // Show the initial countdown
-  render();
-  const timerInterval = setInterval(() => {
-    if (remainingSeconds > 0) {
-      remainingSeconds--;
-      render();
-    }
-    if (remainingSeconds === 0) {
-      clearInterval(timerInterval);
-    }
-  }, 1000);
-}
-// 7. INITIAL RENDER
+// Initial render on page load
 render();
