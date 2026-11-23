@@ -9,47 +9,48 @@
   <body>
     <!-- START BELOW -->
 
-<!-- PAGE HEADER -->
-<header>
-  <h1>Practice makes perfect!</h1>
- <p>Time left:
-        <span id="timer-display">15:00</span>
-      </p>
-      <p id="timer-status" class="message" role="status"></p>
+    <!-- PAGE HEADER -->
+    <header>
+      <h1>Practice makes perfect!</h1>
+      <p>Time left: <span id="time-display">15:00</span></p>
     </header>
 
-<!-- MAIN CONTENT -->
-<main>
-  <div class="practice-grid">
-    <!-- CURRENT SLIDE SECTION -->
-    <section class="practice-card">
-      <h2 id="slide-title">Slide 1</h2>
-      <p id="slide-description">Current slide content appears here.</p>
-      <p id="slide-count" class="progress-text">Slide 1 of 15</p>
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="practice-grid">
+        <!-- CURRENT SLIDE SECTION -->
+        <section class="practice-card">
+          <h2 id="slide-title">Slide 1</h2>
+          <p id="slide-description">Current slide content appears here.</p>
+          <p id="slide-count" class="progress-text">Slide 1 of 15</p>
 
-      <!-- Next Slide Button -->
-      <button id="next-button" type="button" class="btn">Next Slide</button>
+          <!-- Next Slide Button -->
+          <button id="next-button" type="button" class="btn">Next Slide</button>
 
-      <!-- Status Message for Program Response -->
-      <p id="message" class="message" role="status">
-        Click the button to advance through your presentation slides.
-      </p>
-    </section>
+          <!-- Status Message for Program Response -->
+          <p id="message" class="message" role="status">
+            Click the button to advance through your presentation slides.
+          </p>
+        </section>
 
-    <!-- PRESENTATION BACKGROUND / VISUAL SETTING -->
-    <section class="practice-card">
-      <p>Background image based on your presentation setting.</p>
-    </section>
-  </div>
+        <!-- PRESENTATION BACKGROUND / VISUAL SETTING & RANDOM CHALLENGE -->
+        <section class="practice-card">
+          <p>Background image based on your presentation setting.</p>
+          <p id="challenge-count" class="progress-text"></p>
+          <div id="challenge-display"></div>
+          <button id="shuffle-button" type="button" class="btn btn-secondary">
+            Shuffle Challenge
+          </button>
+        </section>
+      </div>
 
-  <!-- END PRACTICE -->
-  <section class="end-section">
-    <a href="report.html" class="btn btn-secondary">End Practice</a>
-  </section>
-</main>
+      <!-- END PRACTICE -->
+      <section class="end-section">
+        <a href="report.html" class="btn btn-secondary">End Practice</a>
+      </section>
+    </main>
 
-<script src="script.js"></script>
-
-  
+    <script src="challenge.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
